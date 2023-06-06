@@ -10,27 +10,27 @@ const Navbar = () => {
       color: getRandomColor(),
     },
     {
-      to: "/about",
+      to: "about",
       label: "About",
       color: getRandomColor(),
     },
     {
-      to: "/admissions",
+      to: "admissions",
       label: "Admissions",
       color: getRandomColor(),
     },
     {
-      to: "/news",
+      to: "news",
       label: "News and Events",
       color: getRandomColor(),
     },
     {
-      to: "/contact",
+      to: "contact",
       label: "Contact",
       color: getRandomColor(),
     },
     {
-      to: "/login/student-login",
+      to: "login/student-login",
       label: "Portal",
       color: getRandomColor(),
     },

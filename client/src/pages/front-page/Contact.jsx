@@ -1,8 +1,8 @@
 import React from 'react'
-import Footer from '../components/Footer'
-import bg from "../assets/firmbee-com-SpVHcbuKi6E-unsplash.jpg"
+import Footer from '../../components/Footer'
+import bg from "../../assets/firmbee-com-SpVHcbuKi6E-unsplash.jpg"
 import  { MdEmail, MdLocationPin, MdPhone } from 'react-icons/md';
-import PageTop from '../components/PageTop';
+import PageTop from '../../components/PageTop';
 
 const Contact = () => {
   return (

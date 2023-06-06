@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import bg from "../assets/absolutvision-WYd_PkCa1BY-unsplash.jpg";
-import PageTop from "../components/PageTop";
-import Footer from "../components/Footer";
-import NewsCard from "../components/NewsCard";
-import { client } from '../client';
-import Loading from "../components/Loading";
+import bg from "../../assets/absolutvision-WYd_PkCa1BY-unsplash.jpg";
+import PageTop from "../../components/PageTop";
+import Footer from "../../components/Footer";
+import NewsCard from "../../components/NewsCard";
+import { client } from '../../client';
+import Loading  from "../../components/Loading";
 
 
 

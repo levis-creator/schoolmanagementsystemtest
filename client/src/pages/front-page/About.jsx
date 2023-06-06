@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import bg from "../assets/kimberly-farmer-lUaaKCUANVI-unsplash.jpg"
-import Footer from '../components/Footer';
-import PageTop from '../components/PageTop';
-import { client } from '../client';
+import bg from "../../assets/kimberly-farmer-lUaaKCUANVI-unsplash.jpg"
+import Footer from '../../components/Footer';
+import PageTop from '../../components/PageTop';
+import { client } from '../../client';
 import { PortableText } from '@portabletext/react';
-import Loading from '../components/Loading';
+import Loading from '../../components/Loading';
 const About = () => {
   const [aboutData, setAboutData]=useState([])
   const [isLoading, setIsLoading]=useState(true)

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import bg2 from "../assets/conor-sexton-hRemch0ZDwI-unsplash.jpg"
-import Footer from "../components/Footer";
-import NewsCard from "../components/NewsCard";
-import { client } from "../client";
-import Loading from '../components/Loading';
+import Footer from "../../components/Footer";
+import NewsCard from "../../components/NewsCard";
+import { client } from "../../client";
+import Loading from '../../components/Loading';
 const Home = () => {
   const navigate=useNavigate()
   // sanity theming

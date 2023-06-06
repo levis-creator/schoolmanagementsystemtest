@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const studentSchema = Schema(
+const studentSchema = new Schema(
   {
     firstname: {
       type: String,
@@ -18,12 +18,13 @@ const studentSchema = Schema(
       type: String,
       enum: ["male", "female"],
     },
-    admission_date: {
-      type: Date,
-    },
-    admission_no: {
+    dob: {
       type: String,
+      require: true,
     },
+    guardians: [{type: Schema.Types.ObjectId, ref: "Guardians"}],
   },
-  [Timestamp]
+  { timestamps: true }
 );
+
+module.exports = mongoose.model("Students", studentSchema);
