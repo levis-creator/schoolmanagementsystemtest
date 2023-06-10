@@ -1,8 +1,13 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
+import BottomNavBar from './components/BottomNavBar'
 
 const AdminLayout = () => {
   return (
-    <div>AdminLayout</div>
+    <div>
+      <Outlet/>
+      <BottomNavBar/>
+    </div>
   )
 }
 

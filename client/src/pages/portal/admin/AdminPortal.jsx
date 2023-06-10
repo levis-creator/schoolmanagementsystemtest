@@ -1,14 +1,18 @@
 import React from "react";
-import MenuItem from "../../../components/MenuItem";
+import MenuItem from "./components/MenuItem";
 import { FaUserGraduate } from "react-icons/fa"; 
-
+import { IoMdPeople } from "react-icons/io"
 const menuItems=[
   {
     name:'Students',
     icon:<FaUserGraduate/>,
     path:"all-students"
   },
-  
+  {
+    name:'Staff',
+    icon:<IoMdPeople/>,
+    path:"all-staffs"
+  },
   
 ]
 const AdminPortal = () => {

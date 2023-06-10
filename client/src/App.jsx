@@ -20,9 +20,11 @@ import { store } from "./app/store";
 import StudentPortal from "./pages/portal/StudentPortal";
 import Dashboard from "./pages/portal/Dashboard";
 import AdminPortal from "./pages/portal/admin/AdminPortal";
-import Students from "./pages/portal/admin/Students/Students";
 import SingleStudent from "./pages/portal/admin/Students/SingleStudent";
-import StudentContextProvider from "./contexts/StudentContext";
+import AllStudents from "./pages/portal/admin/Students/AllStudents";
+import AdminLayout from "./pages/portal/admin/AdminLayout";
+import AdminContextProvider from "./contexts/AdminContext";
+import AllStaffs from "./pages/portal/admin/staff/AllStaffs";
 
 function App() {
   return (
@@ -106,13 +108,16 @@ function App() {
         >
           <Route path="staff/:id" element={<StaffPortal />} />
           <Route path="student/:id" element={<StudentPortal />} />
-          <Route path="admin/:id" element={<AdminPortal />} />
-          <Route element={<StudentContextProvider />}>
-            <Route path="admin/:id/all-students" element={<Students />} />
-            <Route
-              path="admin/:id/all-students/:id"
-              element={<SingleStudent />}
-            />
+          <Route element={<AdminContextProvider />}>
+            <Route element={<AdminLayout />}>
+              <Route path=":id/admin/" index element={<AdminPortal />} />
+              <Route path=":id/admin/all-students" element={<AllStudents />} />
+              <Route
+                path=":id/admin/all-students/:id"
+                element={<SingleStudent />}
+              />
+               <Route path=":id/admin/all-staff" element={<AllStaffs />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

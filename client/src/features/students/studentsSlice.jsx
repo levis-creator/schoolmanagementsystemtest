@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
+  createStudent,
   fetchAllStudents,
   getStudent,
   updateStudent,
@@ -21,32 +22,44 @@ export const fetchStudent = createAsyncThunk(
 );
 export const editStudent = createAsyncThunk(
   "students/editStudent",
-  async ({id, data},{rejectWithValue}) => {
-    console.log(data)
+  async ({ id, data }, { rejectWithValue }) => {
+    console.log(data);
     try {
-      const response = await updateStudent(id, {data});
-      
+      const response = await updateStudent(id, { data });
+
       return response.data;
-    } catch (error) {return rejectWithValue(error.response.data)}
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
 );
-
+export const addStudent = createAsyncThunk(
+  "students/addStudent",
+  async (student) => {
+    try {
+      const response = await createStudent(student);
+      return response.data
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 const initialState = {
   students: [],
   singleStudent: {},
+  addingStatus: "idle",
   allStudentStatus: "idle", //'idle' | 'loading' | 'succeeded' | 'failed'
   error: null,
   singleStudentStatus: "idle", //'idle' | 'loading' | 'succeeded' | 'failed'
-  updateStudentStatus: "idle", //'idle' | 'loading' | 'succeeded' | 'failed'
 };
 const studentsSlice = createSlice({
   name: "students",
   initialState,
   reducers: {
-    studentUpdated(state, action){
-      state.singleStudent.delete()
-      state.singleStudent.push(action.payload)
-    }
+    studentUpdated(state, action) {
+      state.singleStudent.delete();
+      state.singleStudent.push(action.payload);
+    },
   },
   extraReducers(builder) {
     builder
@@ -74,23 +87,22 @@ const studentsSlice = createSlice({
         state.singleStudentStatus = "failed";
         state.error = action.error.message;
       })
-      // updating student
-      .addCase(editStudent.pending, (state, action) => {
-        state.updateStudentStatus = "loading";
+      // add student to database
+      .addCase(addStudent.pending, (state, action) => {
+        state.addingStatus = "loading";
       })
-      .addCase(editStudent.fulfilled, (state, action) => {
-        state.updateStudentStatus = "succeeded";
-        state.updatedStudent=action.payload
+      .addCase(addStudent.fulfilled, (state, action) => {
+        state.addingStatus = "succeeded";
+        state.allStudentStatus="idle"
       })
-      .addCase(editStudent.rejected, (state, action) => {
-        state.updateStudentStatus = "failed";
-        state.error = action.error.message;
+      .addCase(addStudent.rejected, (state, action) => {
+        state.addingStatus = "failed";
       });
   },
 });
 
 // actions
-export const {studentUpdated}=studentsSlice.actions
+export const { studentUpdated } = studentsSlice.actions;
 // states
 export const allStudentStatus = (state) => state.students.allStudentStatus;
 export const studentStatus = (state) => state.students.singleStudentStatus;

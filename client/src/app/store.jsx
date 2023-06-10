@@ -1,9 +1,10 @@
+import { configureStore } from "@reduxjs/toolkit";
+import studentReducer from "../features/students/studentsSlice";
+import staffReducer from "../features/staff/staffSlice";
 
-import { configureStore } from "@reduxjs/toolkit"
-import studentReducer from "../features/students/studentsSlice"
-
-export const store=configureStore({
-    reducer:{
-        students: studentReducer,
-    }
-})
+export const store = configureStore({
+  reducer: {
+    students: studentReducer,
+    staffs: staffReducer,
+  },
+});

@@ -1,10 +1,13 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const studentsRoutes = require("./routes/studentsRoutes");
-const guardiansRoutes = require("./routes/guardiansRoutes");
 const mongoose = require("mongoose");
 const app = express();
+// routes imports
+const studentsRoutes = require("./routes/studentsRoutes");
+const guardiansRoutes = require("./routes/guardiansRoutes");
+const staffRoutes = require("./routes/staffRoutes");
+
 const port = process.env.PORT || 3000;
 const mongoURI = process.env.MONGODB_URI;
 // middleware
@@ -18,6 +21,8 @@ app.use(cors());
 // routes
 app.use("/api/students", studentsRoutes);
 app.use("/api/guardians", guardiansRoutes);
+app.use("/api/staffs", staffRoutes);
+
 // server response
 mongoose
   .connect(mongoURI)
